@@ -8,10 +8,10 @@ import requests
 import time
 import base64
 #event hub details
-eventhub_namespace = "ebay0908evebthubworkspace0908"
-eventhub_name = "ebayeventhub0908"
+eventhub_namespace = "ebayeventhub0908"
+eventhub_name = "ebay0908"
 shared_access_key_name = "ebaypolicy0908"
-shared_access_key = "NfDbQqAUYpXHxmu7alT0cWoMkoK8nHMxP+AEhL8WpNE="
+shared_access_key = "pTTkv564U4CkRv0zDvea8lv062mjGq09F+AEhOgSDMI="
 
 current_date = datetime.now().strftime("%Y-%m-%d")
 
@@ -105,11 +105,10 @@ def productDetails(url, product, page_number):
                             values_text = values_div.find('span', class_='ux-textspans').text.strip() if values_div else None
                             if values_text is not None:
                                 value_split = values_text.split(' ')
-                                if (len(value_split)>1) and value_split[1] in ['lbs', 'in', 'GB', 'MB', 'TB', 'GHz','pounds']:
+                                if (len(value_split)>1) and value_split[1] in ['lbs', 'in', 'GB', 'MB', 'TB', 'GHz','pounds','lb','g','kg']:
                                     values_text = value_split[0]
-                                    labels_text = labels_text+"["+value_split[1]+"]"
                                 elif values_text:
-                                    for unit in ['lbs', 'in', 'GB', 'MB', 'TB', 'GHz','pounds']:
+                                    for unit in ['lbs', 'in', 'GB', 'MB', 'TB', 'GHz','pounds','lb','g','kg']:
                                         values_text = values_text.replace(unit, '')
                                 else:
                                     values_text
